@@ -1,6 +1,6 @@
 # jekyll-compress-images
 
-Plugin for compress images using image_optim, image_optim_pack. 
+Plugin for compress/optimize images (jpeg, png, gif, svg), using image_optim, image_optim_pack. 
 
 # Installation
 

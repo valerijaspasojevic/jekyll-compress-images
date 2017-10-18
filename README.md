@@ -1,6 +1,6 @@
 # jekyll-compress-images
 
-Plugin for compress/optimize images (jpeg, png, gif, svg), using image_optim, image_optim_pack. 
+Plugin for compress/optimize images (jpg, png, gif, svg), using image_optim, image_optim_pack. 
 
 # Installation
 
@@ -35,4 +35,4 @@ if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,j
 
 on  `jekyll serve` or in `jekyll build` it will run compression, if you already run compression you don't need to worry because it will not run again on already compressed images which will save bunch of time! :)
 
-* Enjoy
+**Enjoy 🎉

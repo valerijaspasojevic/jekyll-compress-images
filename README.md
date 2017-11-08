@@ -1,8 +1,8 @@
 # jekyll-compress-images
 
-Plugin for compress/optimize images (jpg, png, gif, svg), using image_optim, image_optim_pack. 
+Plugin for compress/optimize images (jpg, png, gif, svg).
 
-# Installation using gem
+# Installation
 
 add to your `Gemfile`:
 
@@ -17,23 +17,7 @@ plugins:
   - jekyll-compress-images
 ```
 
-# Installation in _plugins - you can skip this step if you already install plugin using gem
-
-add to your `Gemfile`:
-
-```ruby
-gem 'image_optim'
-gem 'image_optim_pack'
-```
-
-and in `_config.yml`:
-
-```ruby
-plugins:
-  - image_optim
-  - image_optim_pack
-```
-Download from the repo `compress_images.rb`, put file in `_plugins` folder
+Run `bundle install` in your locale folder
 
 # Configuration
 
@@ -42,11 +26,9 @@ If you want to setup different path for images, open `_config.yml` add
 ```ruby
 compress_images:
   images_path: "yourpath/img/**/*.{gif,png,jpg,jpeg}"
-```  
+```
 
 if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,jpeg}`
-
-Run `bundle install` in your locale folder
 
 # Usage
 

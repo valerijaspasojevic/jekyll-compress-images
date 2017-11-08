@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Valerija Spasojevic"]
   s.email       = 'spasojevic.valerija@gmail.com'
   s.files       = Dir.glob('lib/*')
-  s.homepage    = 'https://rubygems.org/gems/example'
+  s.homepage    = 'https://rubygems.org/gems/jekyll-compress-images'
   s.metadata    = { "source_code_uri" => "https://github.com/valerijaspasojevic/jekyll-compress-images" }
   s.add_runtime_dependency 'image_optim', '>= 0'
   s.add_runtime_dependency 'image_optim_pack', '>= 0'

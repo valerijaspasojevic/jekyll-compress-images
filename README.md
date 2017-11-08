@@ -18,7 +18,7 @@ plugins:
 ```
 
 # Installation in _plugins
-**(you can skip this step if you already install plugin using gem)
+**(you can skip this step if you already install plugin using gem)**
 
 add to your `Gemfile`:
 

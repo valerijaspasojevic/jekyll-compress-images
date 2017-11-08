@@ -17,8 +17,7 @@ plugins:
   - jekyll-compress-images
 ```
 
-# Installation in _plugins
-## you can skip this step if you already install plugin using gem
+# Installation in _plugins - you can skip this step if you already install plugin using gem
 
 add to your `Gemfile`:
 
@@ -53,4 +52,4 @@ Run `bundle install` in your locale folder
 
 on  `jekyll serve` or in `jekyll build` it will run compression, if you already run compression you don't need to worry because it will not run again on already compressed images which will save bunch of time! :)
 
-**Enjoy 🎉
+**Enjoy** 🎉

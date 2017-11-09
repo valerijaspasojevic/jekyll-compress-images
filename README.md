@@ -30,7 +30,7 @@ compress_images:
   images_path: "yourpath/img/**/*.{gif,png,jpg,jpeg}"
 ```
 
-if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,jpeg}`
+if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,jpeg,svg}`
 
 # Usage
 

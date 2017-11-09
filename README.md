@@ -19,7 +19,7 @@ plugins:
   - jekyll-compress-images
 ```
 
-Run `bundle install` in your locale folder
+Run `bundle install` in your project folder
 
 # Configuration
 
@@ -34,6 +34,6 @@ if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,j
 
 # Usage
 
-on  `jekyll serve` or in `jekyll build` it will run compression, if you already run compression you don't need to worry because it will not run again on already compressed images which will save bunch of time! :)
+on  `jekyll serve` or in `jekyll build` you will run compression, if your images are already compressed, you don't need to worry because it will not run it again which will save bunch of time! :)
 
 **Enjoy** 🎉

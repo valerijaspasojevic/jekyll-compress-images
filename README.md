@@ -1,4 +1,4 @@
-# jekyll-compress-images
+[![Gem Version](https://badge.fury.io/rb/jekyll-compress-images.svg)](https://badge.fury.io/rb/jekyll-compress-images) # jekyll-compress-images
 
 Plugin for compress/optimize images (jpg, png, gif, svg).
 

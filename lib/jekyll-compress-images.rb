@@ -27,7 +27,7 @@ module Jekyll
     def default_options
       {
         "cache_file" => "_compress_images_cache.yml",
-        "images_path" => "assets/img/**/*.{gif,png,jpg,jpeg}",
+        "images_path" => "assets/img/**/*.{gif,png,jpg,jpeg,svg}",
       }
     end
 

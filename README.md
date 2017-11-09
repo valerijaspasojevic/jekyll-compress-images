@@ -34,6 +34,6 @@ if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,j
 
 # Usage
 
-on  `jekyll serve` or in `jekyll build` you will run compression, if your images are already compressed, you don't need to worry because it will not run it again which will save bunch of time! :)
+on  `jekyll serve` or in `jekyll build` you will run compression, if your images are already compressed, you don't need to worry because it will not run again which will save bunch of time! :)
 
 **Enjoy** 🎉

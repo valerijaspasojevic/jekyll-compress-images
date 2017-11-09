@@ -14,7 +14,7 @@ module Jekyll
 
       @config = default_options.merge! config
 
-      @image_optim = ImageOptim.new pngout: false, svgo: false, verbose: false
+      @image_optim = ImageOptim.new pngout: false, svgo: true, verbose: false
 
       @last_update = YAML::load_file @config["cache_file"] if File.file? @config["cache_file"]
       @last_update ||= {}
@@ -27,7 +27,7 @@ module Jekyll
     def default_options
       {
         "cache_file" => "_compress_images_cache.yml",
-        "images_path" => "assets/img/**/*.{gif,png,jpg,jpeg}",
+        "images_path" => "assets/img/**/*.{gif,png,jpg,jpeg,svg}",
       }
     end
 

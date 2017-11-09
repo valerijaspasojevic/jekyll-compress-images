@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'jekyll-compress-images'
-  s.version     = '1.0'
+  s.version     = '1.1'
   s.licenses    = ['MIT']
   s.summary     = "Jekyll plugin for compress/optimize images (jpg, png, gif, svg)"
   s.description = "Plugin for compress/optimize images (jpg, png, gif, svg). If you are struggle how to install more information you can find here: https://github.com/valerijaspasojevic/jekyll-compress-images"

@@ -27,7 +27,7 @@ If you want to setup different path for images, open `_config.yml` add
 
 ```ruby
 compress_images:
-  images_path: "yourpath/img/**/*.{gif,png,jpg,jpeg}"
+  images_path: "yourpath/img/**/*.{gif,png,jpg,jpeg,svg}"
 ```
 
 if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,jpeg,svg}`

@@ -32,6 +32,17 @@ compress_images:
 
 if you don't configure your default path will be `assets/img/**/*.{gif,png,jpg,jpeg,svg}`
 
+## image_optim options
+
+You can pass [image_optim](https://github.com/toy/image_optim) options by using
+
+```ruby
+imageoptim:
+  pngout: false
+  svgo: true
+  verbose: false
+```
+
 # Usage
 
 on  `jekyll serve` or in `jekyll build` you will run compression, if your images are already compressed, you don't need to worry because it will not run again which will save bunch of time! :)

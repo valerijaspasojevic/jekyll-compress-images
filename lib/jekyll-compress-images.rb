@@ -9,12 +9,14 @@ module Jekyll
     def generate(site)
 
       config = YAML::load_file "_config.yml"
-
       config = config["compress_images"] || {}
-
       @config = default_options.merge! config
 
-      @image_optim = ImageOptim.new pngout: false, svgo: true, verbose: false
+      imageoptim_options = YAML::load_file "_config.yml"
+      imageoptim_options = imageoptim_options["imageoptim"] || {}
+      @imageoptim_options = default_imageoptim_options.merge! imageoptim_options
+
+      @image_optim = ImageOptim.new @imageoptim_options
 
       @last_update = YAML::load_file @config["cache_file"] if File.file? @config["cache_file"]
       @last_update ||= {}
@@ -27,7 +29,15 @@ module Jekyll
     def default_options
       {
         "cache_file" => "_compress_images_cache.yml",
-        "images_path" => "assets/img/**/*.{gif,png,jpg,jpeg,svg}",
+        "images_path" => "assets/img/**/*.{gif,png,jpg,jpeg,svg}"
+      }
+    end
+
+    def default_imageoptim_options
+      {
+        "pngout" => false, 
+        "svgo" => true, 
+        "verbose" => false
       }
     end
 

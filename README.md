@@ -47,4 +47,9 @@ imageoptim:
 
 on  `jekyll serve` or in `jekyll build` you will run compression, if your images are already compressed, you don't need to worry because it will not run again which will save bunch of time! :)
 
+
+If this project helps you, you can give me a robot instead of coffee. :)
+
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/ValerijaSpasojevic)
+
 **Enjoy** 🎉

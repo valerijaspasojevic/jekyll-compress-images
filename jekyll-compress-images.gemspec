@@ -20,6 +20,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'image_optim_pack', '~> 0.10'
   s.add_runtime_dependency 'in_threads', '~> 1.5'
 
-  s.add_development_dependency 'minitest', '~> 5.0'
+  s.add_development_dependency 'minitest', '>= 5.0'
   s.add_development_dependency 'rake', '~> 13.0'
 end

@@ -7,24 +7,32 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        ruby: ["3.1", "3.2", "3.3", "3.4"]
+        os: [ubuntu-latest]
+        ruby: ["3.2", "3.3", "3.4", "4.0"]
         jekyll: ["~> 4.4"]
         include:
-          - ruby: "3.1"
-            jekyll: "~> 3.10"
           - ruby: "3.3"
             jekyll: "~> 3.10"
+            os: ubuntu-latest
+          # Oldest supported Ruby, not available on newer Ubuntu images
+          - ruby: "2.7"
+            jekyll: "~> 3.10"
+            os: ubuntu-22.04
     env:
       JEKYLL_VERSION: ${{ matrix.jekyll }}
     name: Ruby ${{ matrix.ruby }}, Jekyll ${{ matrix.jekyll }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
+      # avifenc on Ubuntu 22.04 is too old (needs 1.0+), so the AVIF tests skip there
       - name: Install cwebp and avifenc
-        run: sudo apt-get update && sudo apt-get install -y webp libavif-bin
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webp
+          if [ "${{ matrix.os }}" != "ubuntu-22.04" ]; then sudo apt-get install -y libavif-bin; fi
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}

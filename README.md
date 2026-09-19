@@ -68,10 +68,10 @@ compress_images:
   avif: true
 ```
 
-This needs `cwebp` and `avifenc` installed:
+This needs `cwebp` and `avifenc` (version 1.0 or newer) installed:
 
 - macOS: `brew install webp libavif`
-- Ubuntu/Debian (and GitHub Actions): `sudo apt-get install webp libavif-bin`
+- Ubuntu 24.04+/Debian 12+ (and GitHub Actions `ubuntu-latest`): `sudo apt-get install webp libavif-bin`
 
 For every jpg/png, a `.webp` and `.avif` file is added next to it in `_site`, e.g. `hero.jpg.webp`. If one comes out bigger than the original, it's skipped. Your source folder isn't touched.
 

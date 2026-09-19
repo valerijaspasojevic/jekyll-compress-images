@@ -3,16 +3,11 @@ require "test_helper"
 class CompressImagesTest < Minitest::Test
   include SiteHelpers
 
-  def run_plugin(optimizer = FakeOptimizer.new, config = {})
-    TestCompressImages.new(optimizer).generate(site(config))
-    optimizer
-  end
-
   def test_optimizes_images_and_caches_their_digest
     image = add_image("assets/img/a.png")
     optimizer = run_plugin
 
-    assert_equal ["a.png"], optimizer.calls
+    assert_equal ["a.png"], basenames(optimizer.calls)
     assert_equal({ "assets/img/a.png" => Digest::SHA256.file(image).hexdigest }, cache)
   end
 
@@ -28,14 +23,14 @@ class CompressImagesTest < Minitest::Test
     run_plugin
     add_image("assets/img/a.png", "a brand new photo")
 
-    assert_equal ["a.png"], run_plugin.calls
+    assert_equal ["a.png"], basenames(run_plugin.calls)
   end
 
   def test_reoptimizes_once_after_upgrading_from_the_old_cache_format
     add_image("assets/img/a.png")
     File.write(File.join(@source, "_compress_images_cache.yml"), { "assets/img/a.png" => "a.png" }.to_yaml)
 
-    assert_equal ["a.png"], run_plugin.calls
+    assert_equal ["a.png"], basenames(run_plugin.calls)
     assert_empty run_plugin.calls
   end
 
@@ -46,7 +41,7 @@ class CompressImagesTest < Minitest::Test
       run_plugin(FakeOptimizer.new, "compress_images" => { "images_path" => "pics/*.jpg", "cache_file" => "_my_cache.yml" })
     end
 
-    assert_equal ["b.jpg"], optimizer.calls
+    assert_equal ["b.jpg"], basenames(optimizer.calls)
     assert_equal ["pics/b.jpg"], cache("_my_cache.yml").keys
   end
 
@@ -55,7 +50,7 @@ class CompressImagesTest < Minitest::Test
     add_image("assets/img/bad.png")
     optimizer = run_plugin(FakeOptimizer.new(fail_on: "bad.png"))
 
-    assert_equal %w[bad.png good.png], optimizer.calls.sort
+    assert_equal %w[bad.png good.png], basenames(optimizer.calls)
     assert_equal ["assets/img/good.png"], cache.keys
   end
 
@@ -82,9 +77,30 @@ class CompressImagesTest < Minitest::Test
   def test_compresses_a_real_png
     image = add_image("assets/img/real.png", uncompressed_png)
     size_before = File.size(image)
-    Jekyll::CompressImages.new({}).generate(site)
+    build
 
     assert_operator File.size(image), :<, size_before
     assert_equal ["assets/img/real.png"], cache.keys
+  end
+
+  def test_svgo_is_only_enabled_when_installed
+    options = [false, true].map do |installed|
+      s = site
+      plugin = Jekyll::CompressImages.new(s.config)
+      plugin.instance_variable_set(:@site, s)
+      plugin.define_singleton_method(:executable?) { |_name| installed }
+      plugin.send(:imageoptim_options)["svgo"]
+    end
+
+    assert_equal [false, true], options
+  end
+
+  def test_site_config_can_still_turn_svgo_on
+    s = site("imageoptim" => { "svgo" => true })
+    plugin = Jekyll::CompressImages.new(s.config)
+    plugin.instance_variable_set(:@site, s)
+    plugin.define_singleton_method(:executable?) { |_name| false }
+
+    assert plugin.send(:imageoptim_options)["svgo"]
   end
 end
